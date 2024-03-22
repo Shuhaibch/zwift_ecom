@@ -1,9 +1,9 @@
 
 import 'package:ecommerce/commen/widgets/brand/brand_card.dart';
 import 'package:ecommerce/commen/widgets/custom_shapes/container/rounded_cotainer.dart';
-import 'package:ecommerce/util/constants/colors.dart';
-import 'package:ecommerce/util/constants/sizes.dart';
-import 'package:ecommerce/util/helpers/helpe_functions.dart';
+import 'package:ecommerce/utils/constants/colors.dart';
+import 'package:ecommerce/utils/constants/sizes.dart';
+import 'package:ecommerce/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 
 class CBrandShowCase extends StatelessWidget {

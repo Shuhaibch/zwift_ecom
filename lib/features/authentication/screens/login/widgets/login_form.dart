@@ -1,8 +1,8 @@
 import 'package:ecommerce/features/authentication/screens/password_configuration/forget_password.dart';
 import 'package:ecommerce/features/authentication/screens/signup/signup.dart';
 import 'package:ecommerce/navigation_menu.dart';
-import 'package:ecommerce/util/constants/sizes.dart';
-import 'package:ecommerce/util/constants/text_string.dart';
+import 'package:ecommerce/utils/constants/sizes.dart';
+import 'package:ecommerce/utils/constants/text_string.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:iconsax/iconsax.dart';

@@ -1,7 +1,7 @@
 
-import 'package:ecommerce/util/constants/colors.dart';
-import 'package:ecommerce/util/constants/image_string.dart';
-import 'package:ecommerce/util/constants/sizes.dart';
+import 'package:ecommerce/utils/constants/colors.dart';
+import 'package:ecommerce/utils/constants/image_string.dart';
+import 'package:ecommerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
 class CSocialButton extends StatelessWidget {

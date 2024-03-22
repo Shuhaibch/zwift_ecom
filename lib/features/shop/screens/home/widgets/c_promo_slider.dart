@@ -2,8 +2,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ecommerce/commen/widgets/custom_shapes/container/circular_containers.dart';
 import 'package:ecommerce/commen/widgets/images/c_rounded_images.dart';
 import 'package:ecommerce/features/shop/controllers/home_controller.dart';
-import 'package:ecommerce/util/constants/colors.dart';
-import 'package:ecommerce/util/constants/sizes.dart';
+import 'package:ecommerce/utils/constants/colors.dart';
+import 'package:ecommerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

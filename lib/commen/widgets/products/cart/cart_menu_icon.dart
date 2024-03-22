@@ -1,22 +1,24 @@
-import 'package:ecommerce/util/constants/colors.dart';
+import 'package:ecommerce/features/shop/screens/cart/cart_screen.dart';
+import 'package:ecommerce/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class CCartCounterIcon extends StatelessWidget {
   const CCartCounterIcon({
     super.key,
     this.iconColor,
-    required this.onPressed,
+    // required this.onPressed,
   });
   final Color? iconColor;
-  final VoidCallback onPressed;
+  // final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         IconButton(
-          onPressed: onPressed,
+          onPressed: ()=> Get.to(()=>const CartScreen() ),
           icon: Icon(
             Iconsax.shopping_bag,
             color: iconColor,

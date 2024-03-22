@@ -1,5 +1,7 @@
-import 'package:ecommerce/util/constants/sizes.dart';
-import 'package:ecommerce/util/device/device_utility.dart';
+import 'package:ecommerce/utils/constants/colors.dart';
+import 'package:ecommerce/utils/constants/sizes.dart';
+import 'package:ecommerce/utils/device/device_utility.dart';
+import 'package:ecommerce/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -22,6 +24,7 @@ class CAppbar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dark = CHelperFuntions.isDarkMode(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: CSizes.md),
       child: AppBar(
@@ -29,7 +32,8 @@ class CAppbar extends StatelessWidget implements PreferredSizeWidget {
         leading: showBackArrow
             ? IconButton(
                 onPressed: () => Get.back(),
-                icon: const Icon(Iconsax.arrow_left))
+                icon: Icon(Iconsax.arrow_left,
+                    color: dark ? CColors.whiteColor : CColors.blackColor))
             : leadingIcon != null
                 ? IconButton(
                     onPressed: leadingOnPressed, icon: Icon(leadingIcon))

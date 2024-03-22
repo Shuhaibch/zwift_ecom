@@ -1,7 +1,7 @@
 
-import 'package:ecommerce/util/constants/image_string.dart';
-import 'package:ecommerce/util/constants/sizes.dart';
-import 'package:ecommerce/util/constants/text_string.dart';
+import 'package:ecommerce/utils/constants/image_string.dart';
+import 'package:ecommerce/utils/constants/sizes.dart';
+import 'package:ecommerce/utils/constants/text_string.dart';
 import 'package:flutter/material.dart';
 
 class CLoginHeader extends StatelessWidget {

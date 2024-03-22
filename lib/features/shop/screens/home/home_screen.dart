@@ -1,15 +1,17 @@
 import 'package:ecommerce/commen/widgets/custom_shapes/container/primary_header_container.dart';
 import 'package:ecommerce/commen/widgets/custom_shapes/container/seach_container.dart';
 import 'package:ecommerce/commen/widgets/layout/grid_layout.dart';
-import 'package:ecommerce/commen/widgets/products/cart/product_card/product_card_vertical.dart';
+import 'package:ecommerce/commen/widgets/products/product_card/product_card_vertical.dart';
 import 'package:ecommerce/commen/widgets/text/section_heading.dart';
+import 'package:ecommerce/features/shop/screens/all_products/all_products.dart';
 import 'package:ecommerce/features/shop/screens/home/widgets/c_promo_slider.dart';
 import 'package:ecommerce/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:ecommerce/features/shop/screens/home/widgets/home_catagories.dart';
-import 'package:ecommerce/util/constants/colors.dart';
-import 'package:ecommerce/util/constants/image_string.dart';
-import 'package:ecommerce/util/constants/sizes.dart';
+import 'package:ecommerce/utils/constants/colors.dart';
+import 'package:ecommerce/utils/constants/image_string.dart';
+import 'package:ecommerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -54,7 +56,10 @@ class HomeScreen extends StatelessWidget {
                         ),
 
                         //* Catagories
-                        CHomeCatagories()
+                        CHomeCatagories(),
+                        SizedBox(
+                          height: CSizes.spaceBtwSection,
+                        ),
                       ],
                     ),
                   )
@@ -83,7 +88,7 @@ class HomeScreen extends StatelessWidget {
                   //* Heading
                   CSectionHeading(
                     title: 'Popular Products',
-                    onPressed: () {},
+                    onPressed: () => Get.to(() => const AllProductScreen()),
                   ),
                   const SizedBox(height: CSizes.spaceBtwItem),
 

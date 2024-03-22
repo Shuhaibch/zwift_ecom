@@ -1,7 +1,7 @@
-import 'package:ecommerce/util/constants/image_string.dart';
-import 'package:ecommerce/util/constants/sizes.dart';
-import 'package:ecommerce/util/constants/text_string.dart';
-import 'package:ecommerce/util/helpers/helpe_functions.dart';
+import 'package:ecommerce/utils/constants/image_string.dart';
+import 'package:ecommerce/utils/constants/sizes.dart';
+import 'package:ecommerce/utils/constants/text_string.dart';
+import 'package:ecommerce/utils/helpers/helper_functions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';

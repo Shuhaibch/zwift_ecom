@@ -5,11 +5,13 @@ import 'package:ecommerce/commen/widgets/custom_shapes/container/seach_container
 import 'package:ecommerce/commen/widgets/layout/grid_layout.dart';
 import 'package:ecommerce/commen/widgets/products/cart/cart_menu_icon.dart';
 import 'package:ecommerce/commen/widgets/text/section_heading.dart';
+import 'package:ecommerce/features/shop/screens/brands/all_brands.dart';
 import 'package:ecommerce/features/shop/screens/store/widgets/catagory_tab.dart';
-import 'package:ecommerce/util/constants/colors.dart';
-import 'package:ecommerce/util/constants/sizes.dart';
-import 'package:ecommerce/util/helpers/helpe_functions.dart';
+import 'package:ecommerce/utils/constants/colors.dart';
+import 'package:ecommerce/utils/constants/sizes.dart';
+import 'package:ecommerce/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class StoreScreen extends StatelessWidget {
   const StoreScreen({super.key});
@@ -22,8 +24,8 @@ class StoreScreen extends StatelessWidget {
         appBar: CAppbar(
           title:
               Text('Store', style: Theme.of(context).textTheme.headlineMedium),
-          actions: [
-            CCartCounterIcon(onPressed: () {}),
+          actions: const [
+            CCartCounterIcon(),
           ],
         ),
         body: NestedScrollView(
@@ -55,7 +57,9 @@ class StoreScreen extends StatelessWidget {
                       //* Featured Brand
 
                       CSectionHeading(
-                          title: "Featured Brands", onPressed: () {}),
+                        title: "Featured Brands",
+                        onPressed: () => Get.to(() => const AllBrandScreen()),
+                      ),
                       const SizedBox(height: CSizes.spaceBtwItem / 1.5),
 
                       //* featuredBrand Logo Details
@@ -63,7 +67,9 @@ class StoreScreen extends StatelessWidget {
                         mainAxisExtent: 88,
                         itemCount: 4,
                         itemBuilder: (_, index) {
-                          return const CBrandCard(showBorder: true);
+                          return CBrandCard(
+                            showBorder: true,
+                          );
                         },
                       )
                     ],

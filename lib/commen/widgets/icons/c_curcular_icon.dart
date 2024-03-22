@@ -1,6 +1,6 @@
-import 'package:ecommerce/util/constants/colors.dart';
-import 'package:ecommerce/util/constants/sizes.dart';
-import 'package:ecommerce/util/helpers/helpe_functions.dart';
+import 'package:ecommerce/utils/constants/colors.dart';
+import 'package:ecommerce/utils/constants/sizes.dart';
+import 'package:ecommerce/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 
 class CCircularIcon extends StatelessWidget {
@@ -35,7 +35,9 @@ class CCircularIcon extends StatelessWidget {
                 : CColors.whiteColor.withOpacity(0.9),
       ),
       child: IconButton(
-          onPressed: onPressed, icon: Icon(icon, color: color, size: size)),
+          onPressed: onPressed, icon: Icon(icon, color: color,
+          
+           size: size)),
     );
   }
 }

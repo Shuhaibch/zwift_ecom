@@ -1,4 +1,4 @@
-import 'package:ecommerce/util/constants/enum.dart';
+import 'package:ecommerce/utils/constants/enum.dart';
 import 'package:flutter/material.dart';
 
 class CBrandTitleText extends StatelessWidget {

@@ -1,4 +1,4 @@
-import 'package:ecommerce/util/constants/sizes.dart';
+import 'package:ecommerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
 class CSpacingStyle {

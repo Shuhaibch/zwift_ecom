@@ -1,16 +1,17 @@
 import 'package:ecommerce/commen/styles/spacing_styles.dart';
-import 'package:ecommerce/util/constants/sizes.dart';
-import 'package:ecommerce/util/constants/text_string.dart';
-import 'package:ecommerce/util/helpers/helpe_functions.dart';
+import 'package:ecommerce/utils/constants/sizes.dart';
+import 'package:ecommerce/utils/constants/text_string.dart';
+import 'package:ecommerce/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 
 class SuccessScreen extends StatelessWidget {
-  const SuccessScreen(
-      {super.key,
-      required this.image,
-      required this.title,
-      required this.subTitle,
-      required this.onPressed});
+  const SuccessScreen({
+    super.key,
+    required this.image,
+    required this.title,
+    required this.subTitle,
+    required this.onPressed,
+  });
   final String image, title, subTitle;
   final VoidCallback onPressed;
   @override
