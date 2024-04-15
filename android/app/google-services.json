@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "896785027723",
+    "project_id": "zwift-34e94",
+    "storage_bucket": "zwift-34e94.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:896785027723:android:c290047fd389da7b9e7a8e",
+        "android_client_info": {
+          "package_name": "com.example.ecommerce"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "896785027723-tnrv6hmd0ki58rffmajkurs6be1r3n77.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ecommerce",
+            "certificate_hash": "237a3b9188e0cf74019130542dd3ce9c206ffdd6"
+          }
+        },
+        {
+          "client_id": "896785027723-5cfvm8ihiefi6tbpskpg2h5gmqdf8529.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuIq5H7TljQudh9QWDAd6gyr9ZnBvjBgg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "896785027723-5cfvm8ihiefi6tbpskpg2h5gmqdf8529.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "896785027723-p9cj4gv125dbn68pc3p7ja1mhf3uhkdd.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.ecommerce"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

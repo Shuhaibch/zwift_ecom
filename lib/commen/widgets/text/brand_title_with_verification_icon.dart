@@ -1,7 +1,8 @@
 import 'package:ecommerce/commen/widgets/text/brand_title_text.dart';
-import 'package:ecommerce/util/constants/colors.dart';
-import 'package:ecommerce/util/constants/enum.dart';
-import 'package:ecommerce/util/constants/sizes.dart';
+import 'package:ecommerce/features/shop/models/brand_model.dart';
+import 'package:ecommerce/utils/constants/colors.dart';
+import 'package:ecommerce/utils/constants/enum.dart';
+import 'package:ecommerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:iconsax/iconsax.dart';
@@ -9,14 +10,14 @@ import 'package:iconsax/iconsax.dart';
 class CBrandTitleWithVerificationIcon extends StatelessWidget {
   const CBrandTitleWithVerificationIcon({
     super.key,
-    required this.title,
+     this.title='',
     this.maxLines = 1,
     this.textColor,
     this.iconColor = CColors.primaryColor,
     this.textAlign = TextAlign.center,
-    this.brandTextSize = TextSizes.small,
+    this.brandTextSize = TextSizes.small, required this.brand,
   });
-
+  final BrandModel brand;
   final String title;
   final int maxLines;
   final Color? textColor, iconColor;
@@ -28,7 +29,7 @@ class CBrandTitleWithVerificationIcon extends StatelessWidget {
       children: [
         Flexible(
             child: CBrandTitleText(
-          title: title,
+          title: brand.name,
           brandTextSize: brandTextSize,
           color: textColor,
           maxLines: maxLines,

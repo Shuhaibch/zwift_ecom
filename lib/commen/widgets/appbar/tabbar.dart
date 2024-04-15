@@ -1,6 +1,6 @@
-import 'package:ecommerce/util/constants/colors.dart';
-import 'package:ecommerce/util/device/device_utility.dart';
-import 'package:ecommerce/util/helpers/helpe_functions.dart';
+import 'package:ecommerce/utils/constants/colors.dart';
+import 'package:ecommerce/utils/device/device_utility.dart';
+import 'package:ecommerce/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 
 class CTabbar extends StatelessWidget implements PreferredSizeWidget {

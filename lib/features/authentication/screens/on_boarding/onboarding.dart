@@ -1,9 +1,9 @@
 import 'package:ecommerce/features/authentication/controllers/onboarding/on_boarding_controller.dart';
 import 'package:ecommerce/features/authentication/screens/on_boarding/widgets/onboarding_dotnavigation.dart';
 import 'package:ecommerce/features/authentication/screens/on_boarding/widgets/onboarding_next_button.dart';
-import 'package:ecommerce/util/constants/image_string.dart';
-import 'package:ecommerce/util/constants/sizes.dart';
-import 'package:ecommerce/util/constants/text_string.dart';
+import 'package:ecommerce/utils/constants/image_string.dart';
+import 'package:ecommerce/utils/constants/sizes.dart';
+import 'package:ecommerce/utils/constants/text_string.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'widgets/onboarding_page.dart';
@@ -26,7 +26,7 @@ class OnBoardingScreen extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.all(CSizes.defaultSpace),
                 child: OnBoardingPage(
-                  image: CIMages.onBoardingImage1,
+                  image: CIMages.firstScreenLotties,
                   subTite: CText.onBordingSubTitle1,
                   title: CText.onBordingTitle1,
                 ),
@@ -34,7 +34,7 @@ class OnBoardingScreen extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.all(CSizes.defaultSpace),
                 child: OnBoardingPage(
-                  image: CIMages.onBoardingImage2,
+                  image: CIMages.secondScreenLotties,
                   subTite: CText.onBordingSubTitle2,
                   title: CText.onBordingTitle2,
                 ),
@@ -42,7 +42,7 @@ class OnBoardingScreen extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.all(CSizes.defaultSpace),
                 child: OnBoardingPage(
-                  image: CIMages.onBoardingImage3,
+                  image: CIMages.thirdScreenLotties,
                   subTite: CText.onBordingSubTitle3,
                   title: CText.onBordingTitle3,
                 ),

@@ -1,8 +1,8 @@
 import 'package:ecommerce/commen/widget_login_signup/form_devider.dart';
 import 'package:ecommerce/commen/widget_login_signup/social_button.dart';
 import 'package:ecommerce/features/authentication/screens/signup/widgets/signup_form.dart';
-import 'package:ecommerce/util/constants/sizes.dart';
-import 'package:ecommerce/util/constants/text_string.dart';
+import 'package:ecommerce/utils/constants/sizes.dart';
+import 'package:ecommerce/utils/constants/text_string.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
