@@ -20,9 +20,23 @@ class CIMages {
   static const String onBoardingImage3 =
       'assets/images/on_bording_images/sammy-line-delivery.gif';
 
+  //* Lotties
+  static const String deliveredEmailLotties =
+      'assets/images/lottie/email_verification.json';
+       static const String emptyWhishlistLotties =
+      'assets/images/lottie/email_verification.json';
+  static const String firstScreenLotties =
+      'assets/images/lottie/first-screen.json';
+  static const String secondScreenLotties =
+      'assets/images/lottie/second_screen.json';
+  static const String thirdScreenLotties =
+      'assets/images/lottie/third_screen.json';
+
   //* Animations
   static const String deliveredEmailIllustration =
       'assets/images/animations/Delivered-Email-illistration.png';
+      
+      
   static const String deliveredPlainllustration =
       'assets/images/animations/Delivered-Plain-illustration.png';
   static const String productIllustration =
@@ -33,7 +47,8 @@ class CIMages {
       'assets/images/animations/Static-Success-illustration.png';
   static const String verifiedIllustration =
       'assets/images/animations/Verified-illustration.png';
-  static const String successfullRegistrationIllustration =       'assets/images/animations/success.png';
+  static const String successfullRegistrationIllustration =
+      'assets/images/animations/success.png';
 
   //* Catagory Icons
   static const String clothsIcon = 'assets/icons/catagories/cloths.png';
@@ -45,6 +60,7 @@ class CIMages {
   static const String shoesIcon = 'assets/icons/catagories/shoes.png';
   static const String toyIcon = 'assets/icons/catagories/toy.png';
   static const String animalIcon = 'assets/icons/catagories/animal.png';
+  static const String sportsIcon = 'assets/icons/catagories/sports.png';
 
   //* Promo Banner
   static const String promoBanner1 = 'assets/images/banner/banner-3.png';

@@ -26,7 +26,7 @@ class OnBoardingScreen extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.all(CSizes.defaultSpace),
                 child: OnBoardingPage(
-                  image: CIMages.onBoardingImage1,
+                  image: CIMages.firstScreenLotties,
                   subTite: CText.onBordingSubTitle1,
                   title: CText.onBordingTitle1,
                 ),
@@ -34,7 +34,7 @@ class OnBoardingScreen extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.all(CSizes.defaultSpace),
                 child: OnBoardingPage(
-                  image: CIMages.onBoardingImage2,
+                  image: CIMages.secondScreenLotties,
                   subTite: CText.onBordingSubTitle2,
                   title: CText.onBordingTitle2,
                 ),
@@ -42,7 +42,7 @@ class OnBoardingScreen extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.all(CSizes.defaultSpace),
                 child: OnBoardingPage(
-                  image: CIMages.onBoardingImage3,
+                  image: CIMages.thirdScreenLotties,
                   subTite: CText.onBordingSubTitle3,
                   title: CText.onBordingTitle3,
                 ),

@@ -28,7 +28,7 @@ class SignUpController extends GetxController {
     try {
       // Start Loading
       CFullScreenLoader.openLoadingDialog(
-          'We are processing your information', CIMages.lottieSignup);
+          'We are processing your information', CIMages.deliveredEmailLotties);
 
       // Check Internet Connectivity
       final isConnected = await NetworkManager.instance.isConnected();
@@ -47,6 +47,9 @@ class SignUpController extends GetxController {
 
       // Privacy Policy
       if (!privacyPolicy.value) {
+        // Remove Loader
+        CFullScreenLoader.stopLoading();
+
         CLoaders.warnigSnackBar(
           title: 'Accept Privacy Policy',
           message:
@@ -81,7 +84,7 @@ class SignUpController extends GetxController {
           message: 'Your Accouunt has been created! Verify email to continue.');
 
       // Move to verify email screen
-      Get.to(() =>  VerifyEmailScreen(email: email.text.trim()));
+      Get.to(() => VerifyEmailScreen(email: email.text.trim()));
     } catch (e) {
       // Remove Loader
       CFullScreenLoader.stopLoading();

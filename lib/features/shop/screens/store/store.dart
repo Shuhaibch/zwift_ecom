@@ -4,8 +4,12 @@ import 'package:ecommerce/commen/widgets/brand/brand_card.dart';
 import 'package:ecommerce/commen/widgets/custom_shapes/container/seach_container.dart';
 import 'package:ecommerce/commen/widgets/layout/grid_layout.dart';
 import 'package:ecommerce/commen/widgets/products/cart/cart_menu_icon.dart';
+import 'package:ecommerce/commen/widgets/shimmer/brand_shimmer.dart';
 import 'package:ecommerce/commen/widgets/text/section_heading.dart';
+import 'package:ecommerce/features/shop/controllers/catogory_controler.dart';
+import 'package:ecommerce/features/shop/controllers/product/brand_controller.dart';
 import 'package:ecommerce/features/shop/screens/brands/all_brands.dart';
+import 'package:ecommerce/features/shop/screens/brands/brand_product.dart';
 import 'package:ecommerce/features/shop/screens/store/widgets/catagory_tab.dart';
 import 'package:ecommerce/utils/constants/colors.dart';
 import 'package:ecommerce/utils/constants/sizes.dart';
@@ -18,8 +22,10 @@ class StoreScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final category = CategoryController.instance.featuredCategories;
+    final brandController = Get.put(BrandController());
     return DefaultTabController(
-      length: 5,
+      length: category.length,
       child: Scaffold(
         appBar: CAppbar(
           title:
@@ -55,7 +61,6 @@ class StoreScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: CSizes.spaceBtwSection),
                       //* Featured Brand
-
                       CSectionHeading(
                         title: "Featured Brands",
                         onPressed: () => Get.to(() => const AllBrandScreen()),
@@ -63,41 +68,54 @@ class StoreScreen extends StatelessWidget {
                       const SizedBox(height: CSizes.spaceBtwItem / 1.5),
 
                       //* featuredBrand Logo Details
-                      CGridLayout(
-                        mainAxisExtent: 88,
-                        itemCount: 4,
-                        itemBuilder: (_, index) {
-                          return CBrandCard(
-                            showBorder: true,
-                          );
-                        },
-                      )
+                      Obx(() {
+                        if (brandController.isLoading.value) {
+                          return const CBrandShimmer(itemCount: 4);
+                        }
+                        if (brandController.featuredBrands.isEmpty) {
+                          return Center(
+                              child: Text(
+                            'No Data Found!',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium!
+                                .apply(color: CColors.whiteColor),
+                          ));
+                        }
+                        return CGridLayout(
+                          mainAxisExtent: 88,
+                          itemCount: brandController.featuredBrands.length,
+                          itemBuilder: (_, index) {
+                            final brand = brandController.featuredBrands[index];
+                            return CBrandCard(
+                              showBorder: true,
+                              brand: brand,
+                              onTap: () =>
+                                  Get.to(() => BrandProducts(brand: brand)),
+                            );
+                          },
+                        );
+                      })
                     ],
                   ),
                 ),
-                bottom: const CTabbar(
-                  tabs: [
-                    Tab(child: Text('Sports')),
-                    Tab(child: Text('Furniture')),
-                    Tab(child: Text('Electronics')),
-                    Tab(child: Text('Cloths')),
-                    Tab(child: Text('Cosmetics')),
-                  ],
-                ),
+                bottom: CTabbar(
+                    tabs: category
+                        .map((element) => Tab(
+                              child: Text(element.name),
+                            ))
+                        .toList()),
               )
             ];
           },
 
           //* Tabbar Body
-          body: const TabBarView(
-            children: [
-              CCategoryTab(),
-              CCategoryTab(),
-              CCategoryTab(),
-              CCategoryTab(),
-              CCategoryTab()
-            ],
-          ),
+          body: TabBarView(
+              children: category
+                  .map((element) => CCategoryTab(
+                        category: element,
+                      ))
+                  .toList()),
         ),
       ),
     );

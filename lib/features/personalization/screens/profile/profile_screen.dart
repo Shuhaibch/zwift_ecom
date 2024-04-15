@@ -1,10 +1,13 @@
 import 'package:ecommerce/commen/widgets/appbar/appbar.dart';
 import 'package:ecommerce/commen/widgets/images/c_circular_image.dart';
 import 'package:ecommerce/commen/widgets/text/section_heading.dart';
+import 'package:ecommerce/features/personalization/controller/user_controller.dart';
+import 'package:ecommerce/features/personalization/screens/profile/widgets/change_name.dart';
 import 'package:ecommerce/features/personalization/screens/profile/widgets/profile_menu.dart';
 import 'package:ecommerce/utils/constants/image_string.dart';
 import 'package:ecommerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -12,6 +15,8 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = UserController.instance;
+
     return Scaffold(
       //* appbar
       appBar: const CAppbar(showBackArrow: true, title: Text("Profile")),
@@ -27,10 +32,19 @@ class ProfileScreen extends StatelessWidget {
                 width: double.infinity,
                 child: Column(
                   children: [
-                    const CCircularImage(
-                        image: CIMages.user, width: 80, height: 80),
+                    Obx(() {
+                      final networkImage = controller.user.value.profilePicture;
+                      final image =
+                          networkImage.isNotEmpty ? networkImage : CIMages.user;
+                      return CCircularImage(
+                        image: image,
+                        width: 80,
+                        height: 80,
+                        isNetworkImage: networkImage.isNotEmpty,
+                      );
+                    }),
                     TextButton(
-                        onPressed: () {},
+                        onPressed: () => controller.uploadUserProfilePicture(),
                         child: const Text("Change Profile Picture"))
                   ],
                 ),
@@ -47,9 +61,13 @@ class ProfileScreen extends StatelessWidget {
               const SizedBox(height: CSizes.spaceBtwItem),
 
               CProfileMenu(
-                  onPressed: () {}, title: "Name", value: "Shuhaib CH"),
+                  onPressed: () => Get.to(() => const CChangeNameScreen()),
+                  title: "Name",
+                  value: controller.user.value.fullName),
               CProfileMenu(
-                  onPressed: () {}, title: "UserName", value: "shuhaib_ch"),
+                  onPressed: () => Get.to(() => const CChangeNameScreen()),
+                  title: "UserName",
+                  value: controller.user.value.username),
 
               const SizedBox(height: CSizes.spaceBtwItem / 2),
               const Divider(),
@@ -64,13 +82,17 @@ class ProfileScreen extends StatelessWidget {
               CProfileMenu(
                 onPressed: () {},
                 title: "User ID",
-                value: "123546",
+                value: controller.user.value.id,
                 icon: Iconsax.copy,
               ),
               CProfileMenu(
-                  onPressed: () {}, title: "E-mail", value: "shuhaibch"),
+                  onPressed: () {},
+                  title: "E-mail",
+                  value: controller.user.value.email),
               CProfileMenu(
-                  onPressed: () {}, title: "Phone Number", value: "9874563210"),
+                  onPressed: () {},
+                  title: "Phone Number",
+                  value: controller.user.value.phoneNumber),
               CProfileMenu(onPressed: () {}, title: "Gender", value: "Male"),
               CProfileMenu(
                   onPressed: () {},
@@ -82,7 +104,7 @@ class ProfileScreen extends StatelessWidget {
               //* Close Account
               Center(
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () => controller.deleteAccountWarningPopup(),
                   child: const Text(
                     'Close Account',
                     style: TextStyle(color: Colors.red),

@@ -1,7 +1,7 @@
-
 import 'package:ecommerce/utils/constants/sizes.dart';
 import 'package:ecommerce/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class OnBoardingPage extends StatelessWidget {
   const OnBoardingPage({
@@ -15,11 +15,12 @@ class OnBoardingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Image(
+        // LottieBuilder.asset(image, f)
+        LottieBuilder.asset(
+          image,
           fit: BoxFit.contain,
           width: CHelperFuntions.screenWidth() * .8,
           height: CHelperFuntions.screenHeight() * .6,
-          image: AssetImage(image),
         ),
         Text(
           title,

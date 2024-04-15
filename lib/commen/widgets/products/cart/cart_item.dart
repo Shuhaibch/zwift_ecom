@@ -3,6 +3,7 @@
 import 'package:ecommerce/commen/widgets/images/c_rounded_images.dart';
 import 'package:ecommerce/commen/widgets/text/brand_title_with_verification_icon.dart';
 import 'package:ecommerce/commen/widgets/text/product_title_text.dart';
+import 'package:ecommerce/features/shop/models/brand_model.dart';
 import 'package:ecommerce/utils/constants/colors.dart';
 import 'package:ecommerce/utils/constants/image_string.dart';
 import 'package:ecommerce/utils/constants/sizes.dart';
@@ -37,7 +38,7 @@ class CCartItem extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const CBrandTitleWithVerificationIcon(title: 'Nike'),
+              CBrandTitleWithVerificationIcon(brand: BrandModel.empty(),),
               const Flexible(
                 child: CProductTitleText(
                     title: 'Black Shoprts Shoes', maxLine: 1),

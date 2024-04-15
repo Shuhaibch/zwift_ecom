@@ -1,22 +1,29 @@
 import 'package:ecommerce/commen/widgets/custom_shapes/container/rounded_cotainer.dart';
-import 'package:ecommerce/commen/widgets/icons/c_curcular_icon.dart';
 import 'package:ecommerce/commen/widgets/images/c_rounded_images.dart';
+import 'package:ecommerce/commen/widgets/products/favorite_icon/favorite_icon.dart';
 import 'package:ecommerce/commen/widgets/text/brand_title_with_verification_icon.dart';
 import 'package:ecommerce/commen/widgets/text/product_price_text.dart';
 import 'package:ecommerce/commen/widgets/text/product_title_text.dart';
+import 'package:ecommerce/features/shop/controllers/product/product_controller.dart';
+import 'package:ecommerce/features/shop/models/product_model.dart';
 import 'package:ecommerce/utils/constants/colors.dart';
-import 'package:ecommerce/utils/constants/image_string.dart';
 import 'package:ecommerce/utils/constants/sizes.dart';
 import 'package:ecommerce/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
-class CProductCardHorizontal extends StatelessWidget {
-  const CProductCardHorizontal({super.key});
+import '../../../../utils/constants/enum.dart';
 
+class CProductCardHorizontal extends StatelessWidget {
+  const CProductCardHorizontal({super.key, required this.product});
+  final ProductModel product;
   @override
   Widget build(BuildContext context) {
     final dark = CHelperFuntions.isDarkMode(context);
+    final controller = ProductController.instance;
+    final salePercentage =
+        controller.calculateSalePercentage(product.price, product.salePrice);
+
     return Container(
       width: 310,
       padding: const EdgeInsets.all(1),
@@ -35,39 +42,40 @@ class CProductCardHorizontal extends StatelessWidget {
             child: Stack(
               children: [
                 //* Thumbnail Image
-                const SizedBox(
+                SizedBox(
                   height: 120,
                   width: 120,
                   child: CRoundedImage(
-                      imageUrl: CIMages.productShoes, applyImageRadius: true),
+                      imageUrl: product.thumbnail,
+                      applyImageRadius: true,
+                      isNetworkImage: true),
                 ),
 
                 //* Sale Tag
-                Positioned(
-                  top: 12,
-                  child: CRoundedContainer(
-                    radius: CSizes.sm,
-                    backgroundColor: CColors.secondaryColor.withOpacity(0.8),
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: CSizes.sm, vertical: CSizes.sm),
-                    child: Text(
-                      '25%',
-                      style: Theme.of(context)
-                          .textTheme
-                          .labelMedium!
-                          .apply(color: CColors.blackColor),
+                if (salePercentage != null)
+                  Positioned(
+                    top: 12,
+                    child: CRoundedContainer(
+                      radius: CSizes.sm,
+                      backgroundColor: CColors.secondaryColor.withOpacity(0.8),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: CSizes.sm, vertical: CSizes.sm),
+                      child: Text(
+                        '$salePercentage%',
+                        style: Theme.of(context)
+                            .textTheme
+                            .labelMedium!
+                            .apply(color: CColors.blackColor),
+                      ),
                     ),
                   ),
-                ),
 
                 //* Favorite Icon button
-                const Positioned(
+                Positioned(
                   right: 0,
                   top: 0,
-                  child: CCircularIcon(
-                    
-                    icon: Iconsax.heart5,
-                    color: Colors.red,
+                  child: CFavoriteIcon(
+                    productId: product.id,
                   ),
                 ),
               ],
@@ -78,25 +86,58 @@ class CProductCardHorizontal extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.only(top: CSizes.sm, left: CSizes.sm),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Column(
+                  Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       CProductTitleText(
-                        title: "Red Nike Sports Shoes",
+                        title: product.title,
                         smallSize: true,
                       ),
-                      SizedBox(height: CSizes.spaceBtwItem / 2),
-                      CBrandTitleWithVerificationIcon(title: 'Nike')
+                      const SizedBox(height: CSizes.spaceBtwItem / 2),
+                      CBrandTitleWithVerificationIcon(
+                        brand: product.brand!,
+                      )
                     ],
                   ),
                   const Spacer(),
+                  //* Price Row
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Flexible(child: CProductPriceText(price: '256.1')),
+                      //* Price
+                      Flexible(
+                        child: Column(
+                          children: [
+                            if (product.productType ==
+                                    ProductType.single.toString() &&
+                                product.salePrice > 0.00)
+                              Padding(
+                                  padding:
+                                      const EdgeInsets.only(left: CSizes.sm),
+                                  child: Text(
+                                    product.price.toString(),
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .labelMedium!
+                                        .apply(
+                                            decoration:
+                                                TextDecoration.lineThrough),
+                                  )),
 
-                      //* Add to Cart
+                            // Show sale price as main price if sale exist
+                            Padding(
+                              padding: const EdgeInsets.only(left: CSizes.sm),
+                              child: CProductPriceText(
+                                price: product.salePrice.toString(),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      //* Add to cart
                       Container(
                         decoration: const BoxDecoration(
                           color: CColors.darkColor,

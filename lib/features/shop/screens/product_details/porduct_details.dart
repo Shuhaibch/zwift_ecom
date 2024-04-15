@@ -1,10 +1,12 @@
 import 'package:ecommerce/commen/widgets/text/section_heading.dart';
+import 'package:ecommerce/features/shop/models/product_model.dart';
 import 'package:ecommerce/features/shop/screens/product_details/widgets/bottom_add_to_cart_widget.dart';
 import 'package:ecommerce/features/shop/screens/product_details/widgets/product_atributes.dart';
 import 'package:ecommerce/features/shop/screens/product_details/widgets/product_image_slider.dart';
 import 'package:ecommerce/features/shop/screens/product_details/widgets/product_meta_data.dart';
 import 'package:ecommerce/features/shop/screens/product_details/widgets/product_rate_share_widget.dart';
 import 'package:ecommerce/features/shop/screens/product_reviews/product_reviews.dart';
+import 'package:ecommerce/utils/constants/enum.dart';
 import 'package:ecommerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
@@ -12,8 +14,8 @@ import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
-  const ProductDetailsScreen({super.key});
-
+  const ProductDetailsScreen({super.key, required this.product});
+  final ProductModel product;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +24,7 @@ class ProductDetailsScreen extends StatelessWidget {
         child: Column(
           children: [
             //* Product Image Slider
-            const CImageSlider(),
+            CImageSlider(product: product),
 
             //* Product Details
             Padding(
@@ -37,12 +39,14 @@ class ProductDetailsScreen extends StatelessWidget {
                   const CRatingAndShare(),
 
                   //* Price, Title, Stock, & Brand
-                  const CProductMetaData(),
+                  CProductMetaData(product: product),
                   const SizedBox(height: CSizes.spaceBtwItem / 1.5),
 
                   //* Product Atributes
-                  const CProductAtributes(),
-                  const SizedBox(height: CSizes.spaceBtwSection),
+                  if (product.productType != ProductType.single.toString())
+                    CProductAtributes(product: product),
+                  if (product.productType == ProductType.single.toString())
+                    const SizedBox(height: CSizes.spaceBtwSection),
 
                   //* Checkout Button
                   SizedBox(

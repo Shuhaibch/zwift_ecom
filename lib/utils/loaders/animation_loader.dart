@@ -22,8 +22,9 @@ class CAnimationLoaderWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          LottieBuilder.asset(animation,
+          Lottie.asset(animation,
               width: MediaQuery.of(context).size.width * .8),
           const SizedBox(height: CSizes.defaultSpace),
           Text(text,

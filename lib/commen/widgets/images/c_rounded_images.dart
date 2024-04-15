@@ -1,3 +1,5 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:ecommerce/commen/widgets/shimmer/shimmer_loader.dart';
 import 'package:ecommerce/utils/constants/colors.dart';
 import 'package:ecommerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
@@ -38,16 +40,17 @@ class CRoundedImage extends StatelessWidget {
         decoration: BoxDecoration(
             border: border, borderRadius: BorderRadius.circular(borderRadius)),
         child: ClipRRect(
-          borderRadius: applyImageRadius
-              ? BorderRadius.circular(borderRadius)
-              : BorderRadius.zero,
-          child: Image(
-            image: isNetworkImage
-                ? NetworkImage(imageUrl)
-                : AssetImage(imageUrl) as ImageProvider,
-            fit: fit,
-          ),
-        ),
+            borderRadius: applyImageRadius
+                ? BorderRadius.circular(borderRadius)
+                : BorderRadius.zero,
+            child: isNetworkImage
+                ? CachedNetworkImage(imageUrl: imageUrl, fit: fit, 
+                progressIndicatorBuilder: (context, url, progress) => CShimmerEffect(width: width??double.infinity, height: height??158),
+                errorWidget: (context, url, error) => const Icon(Icons.error),)
+                : Image(
+                    image: AssetImage(imageUrl),
+                    fit: fit,
+                  )),
       ),
     );
   }

@@ -1,6 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce/utils/constants/colors.dart';
 import 'package:ecommerce/utils/constants/sizes.dart';
 import 'package:ecommerce/utils/helpers/helper_functions.dart';
+import 'package:ecommerce/commen/widgets/shimmer/shimmer_loader.dart';
 import 'package:flutter/material.dart';
 
 class CCircularImage extends StatelessWidget {
@@ -23,23 +25,38 @@ class CCircularImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: width,
-      height: height,
-      padding: EdgeInsets.all(padding),
-      decoration: BoxDecoration(
-        color: backgroundColor ??
-            (CHelperFuntions.isDarkMode(context)
-                ? CColors.blackColor
-                : CColors.whiteColor),
-        borderRadius: BorderRadius.circular(100),
-      ),
-      child: Image(
-        fit: fit,
-        image: isNetworkImage
-            ? NetworkImage(image)
-            : AssetImage(image) as ImageProvider,
-        color: overlayColor,
-      ),
-    );
+        width: width,
+        height: height,
+        padding: EdgeInsets.all(padding),
+        decoration: BoxDecoration(
+            color: backgroundColor ??
+                (CHelperFuntions.isDarkMode(context)
+                    ? CColors.blackColor
+                    : CColors.whiteColor),
+            borderRadius: BorderRadius.circular(100)),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(100),
+          child: Center(
+            child: isNetworkImage
+                ? CachedNetworkImage(
+                    imageUrl: image,
+                    fit: fit,
+                    color: overlayColor,
+                    progressIndicatorBuilder: (context, url, progress) =>
+                        const CShimmerEffect(
+                      width: 55,
+                      height: 55,
+                      radius: 55,
+                    ),
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
+                  )
+                : Image(
+                    fit: fit,
+                    image: AssetImage(image),
+                    color: overlayColor,
+                  ),
+          ),
+        ));
   }
 }

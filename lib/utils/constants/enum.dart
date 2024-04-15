@@ -13,3 +13,5 @@ enum PaymentMethords {
   razorPay,
   paytm
 }
+
+enum ProductType {single, variable}

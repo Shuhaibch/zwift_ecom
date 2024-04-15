@@ -1,3 +1,5 @@
+import 'package:ecommerce/features/authentication/controllers/forget_password/forget_password_controller.dart';
+import 'package:ecommerce/features/authentication/screens/login/login.dart';
 import 'package:ecommerce/utils/constants/image_string.dart';
 import 'package:ecommerce/utils/constants/sizes.dart';
 import 'package:ecommerce/utils/constants/text_string.dart';
@@ -7,8 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
-  const ResetPasswordScreen({super.key});
-
+  const ResetPasswordScreen({super.key, required this.email});
+  final String email;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,6 +38,14 @@ class ResetPasswordScreen extends StatelessWidget {
 
             //* Title & SubTitle
             Text(
+              email,
+              style: Theme.of(context).textTheme.bodyMedium,
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(
+              height: CSizes.spaceBtwItem,
+            ),
+            Text(
               CText.changePasswordTitle,
               style: Theme.of(context).textTheme.headlineMedium,
               textAlign: TextAlign.center,
@@ -56,14 +66,17 @@ class ResetPasswordScreen extends StatelessWidget {
             SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                    onPressed: () {}, child: const Text(CText.done))),
+                    onPressed: () => Get.offAll(() => const LoginScreen()),
+                    child: const Text(CText.done))),
             const SizedBox(
               height: CSizes.spaceBtwItem,
             ),
             SizedBox(
                 width: double.infinity,
                 child: TextButton(
-                    onPressed: () {}, child: const Text(CText.resendEmail))),
+                    onPressed: () => ForgetPasswordCotroller.instance
+                        .resendPasswordResetEmail(email),
+                    child: const Text(CText.resendEmail))),
           ],
         ),
       ),
