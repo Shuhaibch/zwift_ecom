@@ -34,26 +34,29 @@ class UserAddressScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(CSizes.defaultSpace),
-          child: FutureBuilder(
-            future: controller.getAllUserAddress(),
-            builder: (context, snapshot) {
-              // Helper funtion to check the error
-              final response =
-                  CCloudHelperFuntion.checkMultiRecordState(snapshot: snapshot);
-              if (response != null) return response;
-
-              // fetch data success
-              final addresses = snapshot.data!;
-              return ListView.builder(
-                shrinkWrap: true,
-                itemCount: addresses.length,
-                itemBuilder: (context, index) {
-                  return CSingleAddress(address: addresses[index], onTap: () {}
-                      // controller.selectAddress(addresses[index])
-                      );
-                },
-              );
-            },
+          child: Obx(
+            ()=> FutureBuilder(
+              key: Key(controller.refreshData.value.toString()),
+              future: controller.getAllUserAddress(),
+              builder: (context, snapshot) {
+                // Helper funtion to check the error
+                final response =
+                    CCloudHelperFuntion.checkMultiRecordState(snapshot: snapshot);
+                if (response != null) return response;
+            
+                // fetch data success
+                final addresses = snapshot.data!;
+                return ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: addresses.length,
+                  itemBuilder: (context, index) {
+                    return CSingleAddress(address: addresses[index], onTap: () => controller.selectAddress(addresses[index]),
+                        // controller.selectAddress(addresses[index])
+                        );
+                  },
+                );
+              },
+            ),
           ),
         ),
       ),
