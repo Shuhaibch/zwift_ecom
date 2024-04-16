@@ -1,6 +1,6 @@
 import 'package:ecommerce/commen/widgets/custom_shapes/container/rounded_cotainer.dart';
 import 'package:ecommerce/features/personalization/controller/address_controller.dart';
-import 'package:ecommerce/features/personalization/models/address_modek.dart';
+import 'package:ecommerce/features/personalization/models/address_model.dart';
 import 'package:ecommerce/utils/constants/colors.dart';
 import 'package:ecommerce/utils/constants/sizes.dart';
 import 'package:ecommerce/utils/helpers/helper_functions.dart';
@@ -52,18 +52,16 @@ class CSingleAddress extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'John Doe',
+                    address.name,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
                   const SizedBox(height: CSizes.sm / 2),
-                  const Text('+91 2659884546',
+                  Text(address.formattedPhoneNo,
                       maxLines: 1, overflow: TextOverflow.ellipsis),
                   const SizedBox(height: CSizes.sm / 2),
-                  const Text(
-                      '85785 , HP Road, Near hpTower, Kottapadi, Malappuram, Kerala, India',
-                      softWrap: true),
+                  Text(address.toString(), softWrap: true),
                 ],
               )
             ],
