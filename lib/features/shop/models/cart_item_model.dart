@@ -10,7 +10,7 @@ class CartItemModel {
   int quantity;
   String variationId;
   String? brandName;
-  Map<String, String>? selectedVariation;
+  Map<String, dynamic>? selectedVariation;
   CartItemModel({
     required this.productId,
     this.title = '',
@@ -33,7 +33,7 @@ class CartItemModel {
     int? quantity,
     String? variationId,
     String? brandName,
-    Map<String, String>? selectedVariation,
+    Map<String, dynamic>? selectedVariation,
   }) {
     return CartItemModel(
       productId: productId ?? this.productId,
