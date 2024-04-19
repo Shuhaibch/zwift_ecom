@@ -45,4 +45,32 @@ class CartController extends GetxController {
       }
     }
   }
+
+  //* This function convert ProductModel into cartItemModel
+  CartItemModel convertToCartItem(ProductModel product, int quantity) {
+    if (product.productType == ProductType.single.toString()) {
+      // Reset variation in case of single product type.
+      variationController.resetSelectedAttributes();
+    }
+
+    final variation = variationController.selectedVariation.value;
+    final isVariation = variation.id.isNotEmpty;
+    final price = isVariation
+        ? variation.salePrice > 0.0
+            ? variation.salePrice
+            : variation.price
+        : product.salePrice > 0.0
+            ? product.salePrice
+            : product.price;
+    return CartItemModel(
+      productId: product.id,
+      quantity: quantity,
+      brandName: product.brand != null ? product.brand!.name : '',
+      image: isVariation ? variation.image : product.thumbnail,
+      price: price,
+      selectedVariation: isVariation ? variation.attributeValues : null,
+      title: product.title,
+      variationId: variation.id,
+    );
+  }
 }
