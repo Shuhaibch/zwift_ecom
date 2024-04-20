@@ -44,6 +44,22 @@ class CartController extends GetxController {
         return;
       }
     }
+
+    // Convert ProductModel into cartModel with the given quantty
+    final selectedCartItem =
+        convertToCartItem(product, productQuantityInCart.value);
+
+    // Check if already added in the cart
+    int index = cartItem.indexWhere((cartItem) =>
+        cartItem.productId == selectedCartItem.productId &&
+        cartItem.variationId == selectedCartItem.variationId);
+
+        if (index>=0) {
+          // This quantity is already added or updated/removed form the design(Cart)
+          cartItem[irt]
+        } else {
+          
+        }
   }
 
   //* This function convert ProductModel into cartItemModel
