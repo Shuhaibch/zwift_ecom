@@ -2,6 +2,7 @@ import 'package:ecommerce/commen/styles/shadow.dart';
 import 'package:ecommerce/commen/widgets/custom_shapes/container/rounded_cotainer.dart';
 import 'package:ecommerce/commen/widgets/images/c_rounded_images.dart';
 import 'package:ecommerce/commen/widgets/products/favorite_icon/favorite_icon.dart';
+import 'package:ecommerce/commen/widgets/products/product_card/product_card_vertical_addtocart.dart';
 import 'package:ecommerce/commen/widgets/text/brand_title_with_verification_icon.dart';
 import 'package:ecommerce/commen/widgets/text/product_title_text.dart';
 import 'package:ecommerce/features/shop/controllers/product/product_controller.dart';
@@ -137,25 +138,7 @@ class CProductCardVertical extends StatelessWidget {
                 ),
 
                 //* Add to cart
-                Container(
-                  decoration: const BoxDecoration(
-                    color: CColors.darkColor,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(CSizes.cardRadiusMd),
-                      bottomRight: Radius.circular(CSizes.cardRadiusMd),
-                    ),
-                  ),
-                  child: const SizedBox(
-                    width: CSizes.iconLg * 1.2,
-                    height: CSizes.iconLg * 1.2,
-                    child: Center(
-                      child: Icon(
-                        Iconsax.add,
-                        color: CColors.whiteColor,
-                      ),
-                    ),
-                  ),
-                )
+                 ProductCartAddToCartButton(product: product)
               ],
             )
           ],
@@ -164,3 +147,4 @@ class CProductCardVertical extends StatelessWidget {
     );
   }
 }
+
