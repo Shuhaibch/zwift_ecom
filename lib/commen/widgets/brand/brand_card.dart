@@ -50,7 +50,7 @@ class CBrandCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CBrandTitleWithVerificationIcon(
-                    brand: brand,
+                    title: brand.image,
                     brandTextSize: TextSizes.large,
                   ),
                   Text(

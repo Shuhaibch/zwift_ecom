@@ -5,7 +5,6 @@ import 'package:ecommerce/commen/widgets/text/brand_title_with_verification_icon
 import 'package:ecommerce/commen/widgets/text/product_price_text.dart';
 import 'package:ecommerce/commen/widgets/text/product_title_text.dart';
 import 'package:ecommerce/features/shop/controllers/product/product_controller.dart';
-import 'package:ecommerce/features/shop/models/brand_model.dart';
 import 'package:ecommerce/features/shop/models/product_model.dart';
 import 'package:ecommerce/utils/constants/colors.dart';
 import 'package:ecommerce/utils/constants/enum.dart';
@@ -85,7 +84,7 @@ class CProductMetaData extends StatelessWidget {
             ),
             Expanded(
               child: CBrandTitleWithVerificationIcon(
-                  brand: product.brand ?? BrandModel.empty(),
+                  title: product.brand!.name,
                   brandTextSize: TextSizes.medium),
             ),
           ],

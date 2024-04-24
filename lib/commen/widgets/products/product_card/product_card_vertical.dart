@@ -6,7 +6,6 @@ import 'package:ecommerce/commen/widgets/products/product_card/product_card_vert
 import 'package:ecommerce/commen/widgets/text/brand_title_with_verification_icon.dart';
 import 'package:ecommerce/commen/widgets/text/product_title_text.dart';
 import 'package:ecommerce/features/shop/controllers/product/product_controller.dart';
-import 'package:ecommerce/features/shop/models/brand_model.dart';
 import 'package:ecommerce/features/shop/models/product_model.dart';
 import 'package:ecommerce/features/shop/screens/product_details/porduct_details.dart';
 import 'package:ecommerce/utils/constants/colors.dart';
@@ -15,7 +14,6 @@ import 'package:ecommerce/utils/constants/sizes.dart';
 import 'package:ecommerce/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 
 import '../../text/product_price_text.dart';
 
@@ -98,7 +96,7 @@ class CProductCardVertical extends StatelessWidget {
                   CProductTitleText(title: product.title, smallSize: true),
                   const SizedBox(height: CSizes.spaceBtwItem / 2),
                   CBrandTitleWithVerificationIcon(
-                      brand: product.brand ?? BrandModel.empty()),
+                      title: product.brand!.name ),
                 ],
               ),
             ),

@@ -1,4 +1,6 @@
 import 'package:ecommerce/commen/widgets/icons/c_curcular_icon.dart';
+import 'package:ecommerce/features/shop/controllers/product/cart_controller.dart';
+import 'package:ecommerce/features/shop/models/product_model.dart';
 import 'package:ecommerce/utils/constants/colors.dart';
 import 'package:ecommerce/utils/constants/sizes.dart';
 import 'package:ecommerce/utils/helpers/helper_functions.dart';
@@ -6,10 +8,11 @@ import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 class CBottomAddToCart extends StatelessWidget {
-  const CBottomAddToCart({super.key});
-
+  const CBottomAddToCart({super.key, required this.product});
+  final ProductModel product;
   @override
   Widget build(BuildContext context) {
+    final controller = CartController.instance;
     final dark = CHelperFuntions.isDarkMode(context);
     return Container(
       padding: const EdgeInsets.symmetric(
@@ -24,17 +27,19 @@ class CBottomAddToCart extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+          //* Remove item button
           Row(
             children: [
-              const CCircularIcon(
-                icon: Iconsax.minus_copy,
-                backgroundColor: CColors.darkGreyColor,
-                width: 40,
-                height: 40,
-                color: CColors.whiteColor,
-              ),
+              CCircularIcon(
+                  icon: Iconsax.minus_copy,
+                  backgroundColor: CColors.darkGreyColor,
+                  width: 40,
+                  height: 40,
+                  color: CColors.whiteColor,
+                  onPressed: () =>  controller.productQuantityInCart.value += 1
+                  ),
               const SizedBox(width: CSizes.spaceBtwItem),
-              Text('2', style: Theme.of(context).textTheme.titleSmall),
+              Text(controller.productQuantityInCart.value.toString(), style: Theme.of(context).textTheme.titleSmall),
               const SizedBox(width: CSizes.spaceBtwItem),
               const CCircularIcon(
                 icon: Iconsax.add_copy,

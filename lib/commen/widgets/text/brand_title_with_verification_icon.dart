@@ -1,5 +1,4 @@
 import 'package:ecommerce/commen/widgets/text/brand_title_text.dart';
-import 'package:ecommerce/features/shop/models/brand_model.dart';
 import 'package:ecommerce/utils/constants/colors.dart';
 import 'package:ecommerce/utils/constants/enum.dart';
 import 'package:ecommerce/utils/constants/sizes.dart';
@@ -15,9 +14,8 @@ class CBrandTitleWithVerificationIcon extends StatelessWidget {
     this.textColor,
     this.iconColor = CColors.primaryColor,
     this.textAlign = TextAlign.center,
-    this.brandTextSize = TextSizes.small, required this.brand,
+    this.brandTextSize = TextSizes.small, 
   });
-  final BrandModel brand;
   final String title;
   final int maxLines;
   final Color? textColor, iconColor;
@@ -29,7 +27,7 @@ class CBrandTitleWithVerificationIcon extends StatelessWidget {
       children: [
         Flexible(
             child: CBrandTitleText(
-          title: brand.name,
+          title: title,
           brandTextSize: brandTextSize,
           color: textColor,
           maxLines: maxLines,
