@@ -97,7 +97,7 @@ class CProductCardHorizontal extends StatelessWidget {
                       ),
                       const SizedBox(height: CSizes.spaceBtwItem / 2),
                       CBrandTitleWithVerificationIcon(
-                        brand: product.brand!,
+                        title: product.brand!.name,
                       )
                     ],
                   ),

@@ -1,4 +1,3 @@
-
 import 'package:ecommerce/commen/widgets/icons/c_curcular_icon.dart';
 import 'package:ecommerce/utils/constants/colors.dart';
 import 'package:ecommerce/utils/constants/sizes.dart';
@@ -9,13 +8,18 @@ import 'package:iconsax/iconsax.dart';
 class CProductQuantityWithAddOrRemoveButton extends StatelessWidget {
   const CProductQuantityWithAddOrRemoveButton({
     super.key,
+    required this.quantity,
+    this.add,
+    this.remove,
   });
-
+  final int quantity;
+  final VoidCallback? add, remove;
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         CCircularIcon(
+          onPressed: remove,
           icon: Iconsax.minus,
           width: 32,
           height: 32,
@@ -28,16 +32,17 @@ class CProductQuantityWithAddOrRemoveButton extends StatelessWidget {
               : CColors.lightColor,
         ),
         const SizedBox(width: CSizes.spaceBtwItem),
-        Text('2',
+        Text(quantity.toString(),
             style: Theme.of(context).textTheme.titleSmall),
         const SizedBox(width: CSizes.spaceBtwItem),
-        const CCircularIcon(
+        CCircularIcon(
           icon: Iconsax.add,
           width: 32,
           height: 32,
           size: CSizes.md,
           color: CColors.whiteColor,
           backgroundColor: CColors.primaryColor,
+          onPressed: add,
         ),
       ],
     );

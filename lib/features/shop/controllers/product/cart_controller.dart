@@ -199,4 +199,5 @@ class CartController extends GetxController {
     cartItem.clear();
     updateCart();
   }
+  
 }
