@@ -115,6 +115,25 @@ class CartController extends GetxController {
     );
   }
 
+  //*  initialize already added item's count in cart.
+  void updateAlreadyAddedProductCount(ProductModel product) {
+    // if product has no variation then calculate cartEntries and disoplay total number.
+    // Else make default entries to  and show cartEntries when variation is selected.
+
+    if (product.productType == ProductType.single.toString()) {
+      productQuantityInCart.value = getProductQuantityinCart(product.id);
+    } else {
+      // Get selected variatoin if any
+      final variationId = variationController.selectedVariation.value.id;
+      if (variationId.isNotEmpty) {
+        productQuantityInCart.value =
+            getVariationQuantityInCart(product.id, variationId);
+      } else {
+        productQuantityInCart.value = 0;
+      }
+    }
+  }
+
   //* This function convert ProductModel into cartItemModel
   CartItemModel convertToCartItem(ProductModel product, int quantity) {
     if (product.productType == ProductType.single.toString()) {
@@ -199,5 +218,4 @@ class CartController extends GetxController {
     cartItem.clear();
     updateCart();
   }
-  
 }
