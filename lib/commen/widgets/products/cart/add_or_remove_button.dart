@@ -19,7 +19,7 @@ class CProductQuantityWithAddOrRemoveButton extends StatelessWidget {
     return Row(
       children: [
         CCircularIcon(
-          onPressed: remove,
+          onPressed: quantity > 0 ? remove : null,
           icon: Iconsax.minus,
           width: 32,
           height: 32,

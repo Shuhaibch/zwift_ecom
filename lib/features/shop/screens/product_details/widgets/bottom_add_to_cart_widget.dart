@@ -39,8 +39,9 @@ class CBottomAddToCart extends StatelessWidget {
                     width: 40,
                     height: 40,
                     color: CColors.whiteColor,
-                    onPressed: () =>
-                        controller.productQuantityInCart.value -= 1),
+                    onPressed: () => controller.productQuantityInCart > 0
+                        ? controller.productQuantityInCart.value -= 1
+                        : null),
                 const SizedBox(width: CSizes.spaceBtwItem),
                 Text(controller.productQuantityInCart.value.toString(),
                     style: Theme.of(context).textTheme.titleSmall),

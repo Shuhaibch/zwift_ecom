@@ -1,5 +1,10 @@
+import 'package:ecommerce/commen/widgets/text/section_heading.dart';
 import 'package:ecommerce/data/repositories/address/address_repository.dart';
+import 'package:ecommerce/features/personalization/screens/address/add_new_address_screen.dart';
+import 'package:ecommerce/features/personalization/screens/address/widgets/single_address.dart';
 import 'package:ecommerce/utils/constants/image_string.dart';
+import 'package:ecommerce/utils/constants/sizes.dart';
+import 'package:ecommerce/utils/helpers/cloud_helper_function.dart';
 import 'package:ecommerce/utils/loaders/loader.dart';
 import 'package:ecommerce/utils/network_manager/network_manager.dart';
 import 'package:ecommerce/utils/popups/full_screen_loader.dart';
@@ -120,6 +125,53 @@ class AddressController extends GetxController {
       CFullScreenLoader.stopLoading();
       CLoaders.errorSnackBar(title: 'Address Not Found', message: e.toString());
     }
+  }
+
+  //* Show Address Model bottomsheet at checkout
+  Future<dynamic> selectNewAddressPopup(BuildContext context) {
+    return showModalBottomSheet(
+      context: context,
+      builder: (context) => SingleChildScrollView(
+        child: Container(
+          padding: const EdgeInsets.all(CSizes.lg),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const CSectionHeading(
+                  title: 'Select Address', showActionButton: false),
+              FutureBuilder(
+                future: getAllUserAddress(),
+                builder: (_, snapshot) {
+                  // Helper funtion: Handle loader, No record, or error Message
+                  final response = CCloudHelperFuntion.checkMultiRecordState(
+                      snapshot: snapshot);
+                  if (response != null) return response;
+
+                  return ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: snapshot.data!.length,
+                    itemBuilder: (_, index) => CSingleAddress(
+                      address: snapshot.data![index],
+                      onTap: () async {
+                        await selectedAddress(snapshot.data![index]);
+                        Get.back();
+                      },
+                    ),
+                  );
+                },
+              ),
+              const SizedBox(height: CSizes.defaultSpace * 2),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                    onPressed: () => Get.to(() => const AddNewAddressScreen()),
+                    child: const Text('Add new address')),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   //* function to reset form feild
