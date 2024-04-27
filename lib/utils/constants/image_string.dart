@@ -99,7 +99,7 @@ class CIMages {
   //* Payment Logo
   static const String paymentApple = 'assets/images/payments/apple-pay.png';
   static const String paymentCreditCard =
-      'assets/images/payments/credit-card.png';
+      'assets/images/payments/credit_card.png';
   static const String paymentGooglePay =
       'assets/images/payments/google-pay.png';
   static const String paymentMasterCard =

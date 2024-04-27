@@ -55,7 +55,7 @@ class CheckoutScreen extends StatelessWidget {
                     SizedBox(height: CSizes.spaceBtwItem),
 
                     //* Payment Methords
-                    CBillingPaymnetSection(),
+                    CBillingPaymentSection(),
                     SizedBox(height: CSizes.spaceBtwItem),
 
                     //* Shipping Address
