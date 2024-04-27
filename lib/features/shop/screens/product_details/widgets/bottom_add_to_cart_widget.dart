@@ -40,17 +40,18 @@ class CBottomAddToCart extends StatelessWidget {
                     height: 40,
                     color: CColors.whiteColor,
                     onPressed: () =>
-                        controller.productQuantityInCart.value += 1),
+                        controller.productQuantityInCart.value -= 1),
                 const SizedBox(width: CSizes.spaceBtwItem),
                 Text(controller.productQuantityInCart.value.toString(),
                     style: Theme.of(context).textTheme.titleSmall),
                 const SizedBox(width: CSizes.spaceBtwItem),
-                const CCircularIcon(
+                CCircularIcon(
                   icon: Iconsax.add_copy,
                   backgroundColor: CColors.blackColor,
                   width: 40,
                   height: 40,
                   color: CColors.whiteColor,
+                  onPressed: () => controller.productQuantityInCart.value += 1,
                 ),
               ],
             ),
@@ -66,7 +67,12 @@ class CBottomAddToCart extends StatelessWidget {
               onPressed: controller.productQuantityInCart.value < 1
                   ? null
                   : () => controller.addToCart(product),
-              child: const Text("Add to Cart"),
+              child: controller.productQuantityInCart.value < 1
+                  ? const Text(
+                      "Add to Cart",
+                      style: TextStyle(color: Colors.black38),
+                    )
+                  : const Text("Add to Cart"),
             )
           ],
         ),
