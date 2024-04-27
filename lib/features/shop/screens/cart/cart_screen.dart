@@ -47,16 +47,16 @@ class CartScreen extends StatelessWidget {
       ),
 
       //* Bottom Navigation Checkout button
-      bottomNavigationBar: controller.cartItem.isEmpty
-          ? const SizedBox()
-          : Padding(
-              padding: const EdgeInsets.all(CSizes.defaultSpace),
-              child: ElevatedButton(
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(CSizes.defaultSpace),
+        child: controller.cartItem.isEmpty
+            ? const SizedBox()
+            : ElevatedButton(
                 onPressed: () => Get.to(() => const CheckoutScreen()),
                 child: Obx(() =>
                     Text('Checkout \$${controller.totalCartPrice.value}')),
               ),
-            ),
+      ),
     );
   }
 }
