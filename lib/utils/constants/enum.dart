@@ -1,6 +1,6 @@
 enum TextSizes { small, medium, large }
 
-enum OderStatus { processing, shipped, delivered }
+enum OrderStatus { processing, shipped, delivered }
 
 enum PaymentMethords {
   paypal,
