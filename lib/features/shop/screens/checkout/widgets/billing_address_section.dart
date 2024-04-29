@@ -18,15 +18,16 @@ class CBillingAddressSection extends StatelessWidget {
             onPressed: () => controller.selectNewAddressPopup(context)),
         controller.selectedAddress.value.id.isNotEmpty
             ? Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Shuhaib Ch",
+                  Text(controller.selectedAddress.value.name,
                       style: Theme.of(context).textTheme.bodyLarge),
                   const SizedBox(height: CSizes.spaceBtwItem / 2),
                   Row(
                     children: [
                       const Icon(Icons.phone, color: Colors.grey, size: 16),
                       const SizedBox(width: CSizes.spaceBtwItem),
-                      Text("+91 8989658743",
+                      Text(controller.selectedAddress.value.phoneNumber,
                           style: Theme.of(context).textTheme.bodyMedium),
                     ],
                   ),
@@ -36,7 +37,7 @@ class CBillingAddressSection extends StatelessWidget {
                       const Icon(Icons.location_history,
                           color: Colors.grey, size: 16),
                       const SizedBox(width: CSizes.spaceBtwItem),
-                      Text("Malappuram, Kolar, Kottapadi, Kerala, India",
+                      Text(controller.selectedAddress.value.postalCode,
                           style: Theme.of(context).textTheme.bodyMedium,
                           softWrap: true),
                     ],
