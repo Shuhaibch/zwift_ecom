@@ -23,7 +23,7 @@ class CIMages {
   //* Lotties
   static const String deliveredEmailLotties =
       'assets/images/lottie/email_verification.json';
-       static const String emptyWhishlistLotties =
+  static const String emptyWhishlistLotties =
       'assets/images/lottie/email_verification.json';
   static const String firstScreenLotties =
       'assets/images/lottie/first-screen.json';
@@ -35,8 +35,9 @@ class CIMages {
   //* Animations
   static const String deliveredEmailIllustration =
       'assets/images/animations/Delivered-Email-illistration.png';
-      
-      
+  static const String orderConfirmLottie =
+      'assets/images/lottie/order_confirm.json';
+
   static const String deliveredPlainllustration =
       'assets/images/animations/Delivered-Plain-illustration.png';
   static const String productIllustration =
