@@ -105,10 +105,10 @@ class OrderModel {
     );
   }
 
-  String toJson() => json.encode(toMap());
+  // String toJson() => json.encode(toMap());
 
-  factory OrderModel.fromJson(String source) =>
-      OrderModel.fromSnapshot(json.decode(source) as Map<String, dynamic>);
+  // factory OrderModel.fromJson(String source) =>
+  //     OrderModel.fromSnapshot(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() {

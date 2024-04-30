@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce/data/repositories/authentication/authenticatoin_repostory.dart';
+import 'package:ecommerce/features/shop/models/order_model.dart';
 import 'package:get/get.dart';
 
 class OrderRepository extends GetxController {
@@ -30,7 +31,7 @@ class OrderRepository extends GetxController {
   }
 
   //* Store new user order
-  Future<void> saveOrder(OrderModle orderm, String userId) async {
+  Future<void> saveOrder(OrderModel order, String userId) async {
     try {
       await _db
           .collection('Users')
